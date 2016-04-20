@@ -7,10 +7,10 @@ ON addresses.customer_id=customers.id;
 
 --Get all orders and their line items.
 
-SELECT orders.order_date, orders.total, line_items.unit_price, line_items.quantity
-FROM line_items
-INNER JOIN orders
-ON orders.id=line_items.order_id;
+SELECT *
+FROM orders
+LEFT JOIN line_items
+ON line_items.order_id=orders.id
 
 --Which warehouses have cheetos?
 
@@ -18,7 +18,7 @@ SELECT products.description, warehouse
 FROM products INNER JOIN warehouse_product
    ON products.id = warehouse_product.product_id JOIN warehouse
    ON warehouse.id = warehouse_product.warehouse_id
-WHERE product_id = '5'
+WHERE products.description = 'cheetos'
 
 --Which warehouses have diet pepsi?
 
